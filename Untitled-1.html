@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>ALO lansen mapka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+ 
+  const map = L.map('map').setView([52.069, 19.480], 6); 
+
+  
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap',
+    maxZoom: 18
+  }).addTo(map);
+
+  
+  const locations = [
+  {
+      name: "Łukasz K.(Jonas)",
+      lat: 50.056018,
+      lon: 18.4134746,
+      info: "Traugutta 242B "
+    },
+    {
+      name: "Antek N.",
+      lat: 50.103507,
+      lon: 18.5309221,
+      info: "Wierzbowa 28 Rybnik "
+    
+      
+    },
+    {
+      name: "Mateusz G.",
+      lat: 50.0648653,
+      lon: 18.4181168,
+      info: "Armi Krajowej 7/3 Rydułtowy"
+    },
+    {
+      name: "Małgorzata F. (Virgi)",
+      lat: 50.0410422,
+      lon: 18.6473331,
+      info: "Żytnia 14, Żory"
+    },
+    {
+      name: "Małgorzata M. (Elisa)",
+      lat: 50.071102,
+      lon: 18.3329182,
+      info: "Rybnicka 15, Rzuchów"
+    },
+    {
+      name: "Karolina P. (Nuria)",
+      lat: 50.1257549,
+      lon: 18.546384,
+      info: "Majątkowa 5, Rybnik"
+    },
+    {
+      name: "Michał Z.(Miguel)",
+      lat: 50.0264862,
+      lon: 18.4973682,
+      info: "Pawła Musioła 41, Marklowice"
+    },
+  ];
+
+  
+  locations.forEach(loc => {
+    const marker = L.marker([loc.lat, loc.lon]).addTo(map);
+    marker.bindPopup(`<b>${loc.name}</b><br>${loc.info}`);
+  });
+  
+</script>
+
+</body>
+</html>
