@@ -18,8 +18,8 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
- 
-  const map = L.map('map').setView([52.069, 19.480], 6); 
+  
+  const map = L.map('map').setView([52.069, 19.480], 6);
 
   
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -28,155 +28,72 @@
   }).addTo(map);
 
   
+  const icons = {
+    red: L.icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    }),
+    blue: L.icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    }),
+    green: L.icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    }),
+    orange: L.icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    })
+  };
+
+  
   const locations = [
-  {
-      name: "Łukasz K.(Jonas)",
-      lat: 50.056018,
-      lon: 18.4134746,
-      info: "Traugutta 242B "
-    },
-    {
-      name: "Antoni N. (Ivo)",
-      lat: 50.103507,
-      lon: 18.5309221,
-      info: "Wierzbowa 28 Rybnik "
-    
-      
-    },
-    {
-      name: "Mateusz G. (Stanislav)",
-      lat: 50.0648653,
-      lon: 18.4181168,
-      info: "Armi Krajowej 7/3 Rydułtowy"
-    },
-    {
-      name: "Małgorzata F. (Virgi)",
-      lat: 50.0410422,
-      lon: 18.6473331,
-      info: "Żytnia 14, Żory"
-    },
-    {
-      name: "Małgorzata M. (Elisa)",
-      lat: 50.071102,
-      lon: 18.3329182,
-      info: "Rybnicka 15, Rzuchów"
-    },
-    {
-      name: "Karolina P. (Nuria)",
-      lat: 50.1256763,
-      lon: 18.5489054,
-      info: "Majątkowa 5, Rybnik"
-    },
-    {
-      name: "Michał Z.(Miguel)",
-      lat: 50.0264862,
-      lon: 18.4973682,
-      info: "Pawła Musioła 41, Marklowice"
-    },
-    {
-      name: "Milena K. (Eulalie)",
-      lat: 50.055068,
-      lon: 18.5902719,
-      info: "Profesora Tomasza Strzembosza 10, Rybnik"
-    },
-    {
-      name: "Jakub G. (Rufus)",
-      lat: 50.0827728,
-      lon: 18.3815759,
-      info: "Graniczna 8, Pstrążna"
-    },
-    {
-      name: "Jakub G. (Rufus)",
-      lat: 50.0827728,
-      lon: 18.3815759,
-      info: "Graniczna 8, Pstrążna"
-    },
-    {
-      name: "Dorian (Oscar) Piotr Ł. (Ariel)",
-      lat: 50.1384185,
-      lon: 18.7704899,
-      info: "Józefa Lompy 2b, Orzesze"
-    },
-    {
-      name: "Damian K. (Moritz)",
-      lat: 50.1206196,
-      lon: 18.5065043,
-      info: "Bratków 58A, Rybnik"
-    },
-    {
-      name: "Emilia K. (Annie)",
-      lat: 50.0690771,
-      lon: 18.4090268,
-      info: "Generała Józefa Bema 153, Rydułtowy"
-    },
-    {
-      name: "Klaudia K. (Loona)",
-      lat: 50.1022777,
-      lon: 18.4276248,
-      info: "Rydułtowska 60, Gaszowice"
-    },
-    {
-      name: "Oliwia G. (Yousra)",
-      lat: 49.9943881,
-      lon: 18.5607327,
-      info: "Szkolna 42B, Połomia"
-    },
-    {
-      name: "Oliwia S. (Kahaia)",
-      lat: 50.0725343,
-      lon: 18.4038357,
-      info: "Wolności 1A, Czernica"
-    },
-    {
-      name: "Marceli S. (Constantin)",
-      lat: 50.0827409,
-      lon: 18.401733,
-      info: "Biskupa 4, Czernica"
-    },
-    {
-      name: "Michalina W. (Maelys)",
-      lat: 50.0889752,
-      lon: 18.3940294,
-      info: "Buczyna 17a, Czernica"
-    },
-    {
-      name: "Rynek główny Kraków",
-      lat: 50.06193,
-      lon: 19.9356461,
-      info: " ",
-    },
-    {
-      name: "Centrum Edukacyjno-Kongresowe Politechniki Śląskiej",
-      lat: 50.2923721,
-      lon: 18.6815032,
-      info: " ",
-    },
-    {
-      name: "Politechnika Śląska Centrum Kreatywności studenckiej",
-      lat: 50.29126,
-      lon: 18.6752379,
-      info: " ",
-    },
-    {
-      name: "Wielka Czantoria",
-      lat: 49.6788605,
-      lon: 18.8051143,
-      info: "995m n.p.m."
-    },
-    {
-      name: "Akademickie Liceum Ogólnokształcące Politechniki Śląskiej",
-      lat: 50.0914616,
-      lon: 18.5466068,
-      info: " ",
-    },
+    { name: "Łukasz K.(Jonas)", lat: 50.056018, lon: 18.4134746, info: "Traugutta 242B ", color: "red"},
+    { name: "Antoni N. (Ivo)", lat: 50.103507, lon: 18.5309221, info: "Wierzbowa 28 Rybnik ", color: "red" },
+    { name: "Mateusz G. (Stanislav)", lat: 50.0648653, lon: 18.4181168, info: "Armi Krajowej 7/3 Rydułtowy", color: "red" },
+    { name: "Małgorzata F. (Virgi)", lat: 50.0410422, lon: 18.6473331, info: "Żytnia 14, Żory", color: "red" },
+    { name: "Małgorzata M. (Elisa)", lat: 50.071102, lon: 18.3329182, info: "Rybnicka 15, Rzuchów", color: "red" },
+    { name: "Karolina P. (Nuria)", lat: 50.1256763, lon: 18.5489054, info: "Majątkowa 5, Rybnik", color: "red" },
+    { name: "Michał Z.(Miguel)", lat: 50.0264862, lon: 18.4973682, info: "Pawła Musioła 41, Marklowice", color: "red" },
+    { name: "Milena K. (Eulalie)", lat: 50.055068, lon: 18.5902719, info: "Profesora Tomasza Strzembosza 10, Rybnik", color: "red" },
+    { name: "Jakub G. (Rufus)", lat: 50.0827728, lon: 18.3815759, info: "Graniczna 8, Pstrążna", color: "red" },
+    { name: "Dorian (Oscar) Piotr Ł. (Ariel)", lat: 50.1384185, lon: 18.7704899, info: "Józefa Lompy 2b, Orzesze", color: "red" },
+    { name: "Damian K. (Moritz)", lat: 50.1206196, lon: 18.5065043, info: "Bratków 58A, Rybnik", color: "red" },
+    { name: "Emilia K. (Annie)", lat: 50.0690771, lon: 18.4090268, info: "Generała Józefa Bema 153, Rydułtowy", color: "red" },
+    { name: "Klaudia K. (Loona)", lat: 50.1022777, lon: 18.4276248, info: "Rydułtowska 60, Gaszowice", color: "red" },
+    { name: "Oliwia G. (Yousra)", lat: 49.9943881, lon: 18.5607327, info: "Szkolna 42B, Połomia", color: "red" },
+    { name: "Oliwia S. (Kahaia)", lat: 50.0725343, lon: 18.4038357, info: "Wolności 1A, Czernica", color: "red" },
+    { name: "Marceli S. (Constantin)", lat: 50.0827409, lon: 18.401733, info: "Biskupa 4, Czernica", color: "red" },
+    { name: "Michalina W. (Maelys)", lat: 50.0889752, lon: 18.3940294, info: "Buczyna 17a, Czernica", color: "red" },
+    { name: "Rynek główny Kraków", lat: 50.06193, lon: 19.9356461, info: " ", color: "blue" },
+    { name: "Centrum Edukacyjno-Kongresowe Politechniki Śląskiej", lat: 50.2923721, lon: 18.6815032, info: " ", color: "blue" },
+    { name: "Politechnika Śląska Centrum Kreatywności studenckiej", lat: 50.29126, lon: 18.6752379, info: " ", color: "blue" },
+    { name: "Wielka Czantoria", lat: 49.6788605, lon: 18.8051143, info: "995m n.p.m.", color: "green" },
+    { name: "Akademickie Liceum Ogólnokształcące Politechniki Śląskiej", lat: 50.0914616, lon: 18.5466068, info: " ", color: "blue" }
   ];
 
   
   locations.forEach(loc => {
-    const marker = L.marker([loc.lat, loc.lon]).addTo(map);
+    const marker = L.marker([loc.lat, loc.lon], { icon: icons[loc.color] }).addTo(map);
     marker.bindPopup(`<b>${loc.name}</b><br>${loc.info}`);
   });
-  
 </script>
 
 </body>
