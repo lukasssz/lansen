@@ -22,13 +22,13 @@
   #day-buttons button {
   background-color: transparent;  
   color: #0071e3; 
-  font-size: 12px;
+  font-size: 9px;
   font-weight: 625;  
-  border: 2.75px solid #0071e3;  
-  padding: 12px 24px;
-  border-radius: 13px; 
+  border: 2px solid #0071e3;  
+  padding: 10px 20px;
+  border-radius: 10px; 
   cursor: pointer;
-  margin: 4px;
+  margin: 3px;
   transition: all 0.3s ease;  
   text-transform: uppercase;  
 }
@@ -62,11 +62,11 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
  const dayDescriptions = {
-  1: "Visiting your host's",
-  2: "2",
-  3: "2",
-  4: "2",
-  5: "2",
+  1: "Getting to know your guests and workshop classes in Krakow",
+  2: "Workshops in the computer lab ALO rybnik",
+  3: "Conference and linguistic workshops at the Silesian University of Technology",
+  4: "Mountain trip and outdoor activities",
+  5: "Saying goodbye to the guests and ending the project",
   0: "Showing all locations"
 };
 
@@ -198,11 +198,12 @@ async function getWeather(lat, lon) {
     { name: "Oliwia S. (Kahaia)", lat: 50.0725343, lon: 18.4038357, info: "Wolności 1A, Czernica", color: "red", day: 1 },
     { name: "Marceli S. (Constantin)", lat: 50.0827409, lon: 18.401733, info: "Biskupa 4, Czernica", color: "red", day: 1 },
     { name: "Michalina W. (Maelys)", lat: 50.0889752, lon: 18.3940294, info: "Buczyna 17a, Czernica", color: "red", day: 1 },
-    { name: "Rynek główny Kraków", lat: 50.06193, lon: 19.9356461, info: " ", color: "blue" },
-    { name: "Centrum Edukacyjno-Kongresowe Politechniki Śląskiej", lat: 50.2923721, lon: 18.6815032, info: " ", color: "blue" },
-    { name: "Politechnika Śląska Centrum Kreatywności studenckiej", lat: 50.29126, lon: 18.6752379, info: " ", color: "blue" },
-    { name: "Wielka Czantoria", lat: 49.6788605, lon: 18.8051143, info: "995m n.p.m.", color: "green" },
-    { name: "ALO Rybnik", lat: 50.0914616, lon: 18.5466068, info: '<a href="https://alorybnik.polsl.pl" target="_blank" rel="noopener noreferrer">https://alorybnik.polsl.pl</a>',  color: "blue" },
+    { name: "Rynek główny Kraków", lat: 50.06193, lon: 19.9356461, info: " ", color: "blue", day: 1 },
+    { name: "Centrum Edukacyjno-Kongresowe Politechniki Śląskiej", lat: 50.2923721, lon: 18.6815032, info: " ", color: "blue", day: 3},
+    { name: "Politechnika Śląska Centrum Kreatywności studenckiej", lat: 50.29126, lon: 18.6752379, info: " ", color: "blue", day: 3 },
+    { name: "Wielka Czantoria", lat: 49.6788605, lon: 18.8051143, info: "995m n.p.m.", color: "green",day: 4 },
+    { name: "ALO Rybnik", lat: 50.0914616, lon: 18.5466068, info: '<a href="https://alorybnik.polsl.pl" target="_blank" rel="noopener noreferrer">https://alorybnik.polsl.pl</a>',  color: "blue", day: 2  },
+    { name: "ALO Rybnik", lat: 50.0914616, lon: 18.5466068, info: '<a href="https://alorybnik.polsl.pl" target="_blank" rel="noopener noreferrer">https://alorybnik.polsl.pl</a>',  color: "blue", day: 5  },
     { name: "Parking", lat: 50.0659088, lon: 19.9116393, info: "Reymonta 21A", color: "orange" },
     { name: "Hotel Przy Młynie", lat: 50.0907762, lon: 18.5407436, info: '<a href="https://hotelprzymlynie.pl/en/" target="_blank" rel="noopener noreferrer">https://hotelprzymlynie.pl/en/</a>', color: "orange" },
   ];
