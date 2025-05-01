@@ -96,7 +96,7 @@
   
   locations.forEach(loc => {
     const marker = L.marker([loc.lat, loc.lon], { icon: icons[loc.color] }).addTo(map);
-    marker.bindPopup(<b>${loc.name}</b><br>${loc.info});
+    marker.bindPopup(`<b>${loc.name}</b><br>${loc.info}`);
   });
 </script>
 
