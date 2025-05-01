@@ -17,26 +17,17 @@
 <div id="map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<!-- SmoothWheelZoom plugin -->
-<script src="https://cdn.jsdelivr.net/gh/mutsuyuki/Leaflet.SmoothWheelZoom@main/SmoothWheelZoom.js"></script>
 <script>
-  const map = L.map('map', {
-    center: [52.069, 19.480],
-    zoom: 6,
-    zoomAnimation: true,
-    zoomSnap: 0.1,
-  });
+  
+  const map = L.map('map').setView([52.069, 19.480], 6);
 
-  // Gładki zoom - normalnie tak "skacze"
-  map.scrollWheelZoom.disable();
-  map.smoothWheelZoom.enable({ factor: 1.5, debounceTime: 10 });
-
+  
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap',
     maxZoom: 18
   }).addTo(map);
 
+  
   const icons = {
     red: L.icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
@@ -72,6 +63,7 @@
     })
   };
 
+  
   const locations = [
     { name: "Łukasz K.(Jonas)", lat: 50.056018, lon: 18.4134746, info: "Traugutta 242B ", color: "red"},
     { name: "Antoni N. (Ivo)", lat: 50.103507, lon: 18.5309221, info: "Wierzbowa 28 Rybnik ", color: "red" },
@@ -101,9 +93,10 @@
     { name: "Hotel Przy Młynie", lat: 50.0907762, lon: 18.5407436, info: '<a href="https://hotelprzymlynie.pl/en/" target="_blank" rel="noopener noreferrer">https://hotelprzymlynie.pl/en/</a>', color: "orange" },
   ];
 
+  
   locations.forEach(loc => {
     const marker = L.marker([loc.lat, loc.lon], { icon: icons[loc.color] }).addTo(map);
-    marker.bindPopup(`<b>${loc.name}</b><br>${loc.info}`);
+    marker.bindPopup(<b>${loc.name}</b><br>${loc.info});
   });
 </script>
 
