@@ -19,7 +19,13 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   
-  const map = L.map('map').setView([52.069, 19.480], 6);
+  const map = L.map('map', {
+  center: [51.2, 19.8],
+  zoom: 6.78,
+  zoomSnap: 0.7,
+  zoomDelta: 0.75,
+  zoomAnimation: true
+});
 
   
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
