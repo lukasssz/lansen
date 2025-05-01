@@ -49,24 +49,36 @@
 <body>
 
 <div id="map"></div>
-<div id="day-buttons" style="position: fixed; top: 10px; right: 10px; background: white; padding: 12px; z-index: 1000; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-  <button onclick="highlightDay(1)">Day 1</button>
-  <button onclick="highlightDay(2)">Day 2</button>
-  <button onclick="highlightDay(3)">Day 3</button>
-  <button onclick="highlightDay(4)">Day 4</button>
-  <button onclick="highlightDay(5)">Day 5</button>
-  <button onclick="highlightDay(0)">Show All</button>
-  <p id="day-description" style="margin-top: 10px; font-size: 14px;"></p>
+<div id="day-buttons-container" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+  <div id="day-buttons" style="background: white; padding: 12px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+    
+    
+    <button onclick="toggleDayButtons()" style="margin-bottom: 10px; background-color: #0071e3; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer;">
+      Hide 
+    </button>
+
+    
+    <div id="day-button-group">
+      <button onclick="highlightDay(1)">Day 1</button>
+      <button onclick="highlightDay(2)">Day 2</button>
+      <button onclick="highlightDay(3)">Day 3</button>
+      <button onclick="highlightDay(4)">Day 4</button>
+      <button onclick="highlightDay(5)">Day 5</button>
+      <button onclick="highlightDay(0)">Show All</button>
+      <p id="day-description" style="margin-top: 10px; font-size: 14px;"></p>
+    </div>
+
+  </div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
  const dayDescriptions = {
-  1: "Getting to know your guests and workshop classes in Krakow",
-  2: "Workshops in the computer lab ALO rybnik",
-  3: "Conference and linguistic workshops at the Silesian University of Technology",
-  4: "Mountain trip and outdoor activities",
-  5: "Saying goodbye to the guests and ending the project",
+  1: "Getting to know your guests and workshop classes in Krakow.",
+  2: "Learn how to learn languages.",
+  3: "Conference and linguistic workshops at the Silesian University of Technology.",
+  4: "Mountain trip and outdoor activities.",
+  5: "Saying goodbye to the guests and ending the project.",
   0: "Showing all locations"
 };
 
@@ -222,6 +234,14 @@ async function getWeather(lat, lon) {
       markers.push(marker);
     }
   })();
+  function toggleDayButtons() {
+  const group = document.getElementById("day-button-group");
+  const btn = event.target;
+  const hidden = group.style.display === "none";
+
+  group.style.display = hidden ? "block" : "none";
+  btn.textContent = hidden ? "Hide " : "Show ";
+}
 </script>
 
 </body>
