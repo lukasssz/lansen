@@ -28,7 +28,7 @@
   padding: 12px 24px;
   border-radius: 13px; 
   cursor: pointer;
-  margin: 8px;
+  margin: 4px;
   transition: all 0.3s ease;  
   text-transform: uppercase;  
 }
@@ -133,6 +133,49 @@ function highlightDay(day) {
       shadowSize: [41, 41]
     })
   };
+  function getWeatherDescription(weatherCode) {
+  switch (weatherCode) {
+    case 0:
+      return 'Clear sky';
+    case 1:
+      return 'Mainly clear';
+    case 2:
+      return 'Partly cloudy';
+    case 3:
+      return 'Mostly cloudy';
+    case 4:
+      return 'Overcast';
+    case 5:
+      return 'Fog';
+    case 6:
+      return 'Showers of rain';
+    case 7:
+      return 'Heavy rain';
+    case 8:
+      return 'Snow';
+    case 9:
+      return 'Heavy snow';
+    case 10:
+      return 'Thunderstorms';
+    default:
+      return 'Weather unavailable';
+  }
+}
+
+async function getWeather(lat, lon) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const weatherCode = data.current_weather.weathercode;
+    const description = getWeatherDescription(weatherCode);
+    const temp = data.current_weather.temperature;
+    return `Weather: ${description}, Temp: ${temp}°C`;
+  } catch (error) {
+    console.error('Weather fetch error:', error);
+    return 'Weather unavailable';
+  }
+}
 
   
   const locations = [
@@ -167,13 +210,17 @@ function highlightDay(day) {
   
   const markers = [];
 
-locations.forEach(loc => {
-  const marker = L.marker([loc.lat, loc.lon], { icon: icons[loc.color] }).addTo(map);
-  marker.bindPopup(`<b>${loc.name}</b><br>${loc.info}`);
-  marker.originalColor = loc.color; 
-  marker.day = loc.day || 0; 
-  marker.setIcon(icons[loc.color]); 
-  markers.push(marker); })
+  (async () => {
+    for (const loc of locations) {
+      const weather = await getWeather(loc.lat, loc.lon);
+
+      const marker = L.marker([loc.lat, loc.lon], { icon: icons[loc.color] }).addTo(map);
+      marker.bindPopup(`<b>${loc.name}</b><br>${loc.info}<br><small style="color:gray">${weather}</small>`);
+      marker.originalColor = loc.color;
+      marker.day = loc.day || 0;
+      markers.push(marker);
+    }
+  })();
 </script>
 
 </body>
